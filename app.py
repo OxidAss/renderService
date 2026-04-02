@@ -22,9 +22,9 @@ def send_telegram_message(chat_id, text):
         }
         response = requests.post(TELEGRAM_API_URL, json=payload, timeout=10)
         response.raise_for_status()
-        print(f"✅ Отправлено в чат {chat_id}")
+        print(f"Отправлено в чат {chat_id}")
     except Exception as e:
-        print(f"❌ Ошибка Telegram: {e}")
+        print(f"Ошибка Telegram: {e}")
 
 def handle_telegram_notification(data):
     """Форматирует и отправляет уведомление."""
@@ -35,10 +35,9 @@ def handle_telegram_notification(data):
 
     # Точный текст, который вы просили
     message = (
-        f"⚠️ <b>Подозрительный вход</b>\n\n"
+        f"<b>Подозрительный вход</b>\n\n"
         f"Под ником <code>{nickname}</code> была попытка входа с неизвестного айпи адреса (<code>{ip}</code>).\n\n"
-        f"🖥 Сервер: <code>{server}</code>\n"
-        f"🕐 Время: <code>{timestamp}</code>"
+        f"Время: <code>{timestamp}</code>"
     )
 
     for chat_id in CHAT_IDS:
